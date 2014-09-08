@@ -12,11 +12,11 @@ function string_src(filename, string) {
 }
 
 gulp.task('generate:site', function () {
-  string_src("index.html", (new Date()).toString())
-  .pipe(gulp.dest("./dist"))
+  return string_src("index.html", (new Date()).toString())
+    .pipe(gulp.dest("./dist"));
 });
 
 gulp.task('deploy', ['generate:site'], function () {
-    gulp.src("./dist/**/*")
-      .pipe(deploy(options));
+  return gulp.src("./dist/**/*")
+    .pipe(deploy());
 });
